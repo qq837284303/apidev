@@ -13,4 +13,6 @@ public interface QuestionService {
     public List<Question> getQuestions(QuestionQueryCriteria questionQueryCriteria, PageDTO pageDTO);
 
     public List<Question> getQuestionsByListId(Integer eId);
+
+    public List<Question> getQuestionsByIds(List<Integer> ids);
 }

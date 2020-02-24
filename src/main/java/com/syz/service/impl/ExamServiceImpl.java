@@ -31,4 +31,9 @@ public class ExamServiceImpl implements ExamService {
         }
         return examMapper.selectPage(page,wrapper).getRecords();
     }
+
+    @Override
+    public List<Exam> getExamById(List<Integer> ids) {
+        return examMapper.selectBatchIds(ids);
+    }
 }

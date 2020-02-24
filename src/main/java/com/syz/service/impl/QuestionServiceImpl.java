@@ -49,4 +49,9 @@ public class QuestionServiceImpl implements QuestionService {
         List<Integer> ids = examQuestionMapper.selectQuestionsIdByExamId(eId);
         return questionMapper.selectBatchIds(ids);
     }
+
+    @Override
+    public List<Question> getQuestionsByIds(List<Integer> ids) {
+        return questionMapper.selectBatchIds(ids);
+    }
 }

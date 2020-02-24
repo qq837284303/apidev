@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by K on 2020/2/19.
  */
@@ -23,14 +25,20 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @ApiOperation("获取所有题目")
+    @ApiOperation("获取题目")
     @GetMapping("/questions")
     public ResponseEntity getQuestions(QuestionQueryCriteria questionQueryCriteria, PageDTO pageDTO){
         return new ResponseEntity(questionService.getQuestions(questionQueryCriteria,pageDTO), HttpStatus.OK);
     }
     @ApiOperation("根据测验id获取题目")
-    @GetMapping("/questionsbylistid")
+    @GetMapping("/questionsbyexamid")
     public ResponseEntity getQuestionsByExamId(Integer eId){
         return new ResponseEntity(questionService.getQuestionsByListId(eId),HttpStatus.OK);
+    }
+
+    @ApiOperation("根据Id集获取题目")
+    @GetMapping("/questionsbyid")
+    public ResponseEntity getQuestionsByIds(List<Integer> ids){
+        return new ResponseEntity(questionService.getQuestionsByIds(ids),HttpStatus.OK);
     }
 }

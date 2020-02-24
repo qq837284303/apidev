@@ -13,4 +13,7 @@ import java.util.List;
 public interface ExamService {
 
     public List<Exam> getExams(ExamQueryCriteria examQueryCriteria, PageDTO pageDTO);
+
+    public List<Exam> getExamById(List<Integer> ids);
+    
 }

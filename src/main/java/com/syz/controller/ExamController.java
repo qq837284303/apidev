@@ -9,9 +9,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by K on 2020/2/20.
@@ -23,10 +23,16 @@ public class ExamController {
 
     @Autowired
     private ExamService examService;
-    @ApiOperation("获取测验信息")
+    @ApiOperation("获取所有测验信息")
     @GetMapping("/exams")
     public ResponseEntity getExams(ExamQueryCriteria examQueryCriteria, PageDTO pageDTO){
         return new ResponseEntity(examService.getExams(examQueryCriteria,pageDTO), HttpStatus.OK);
     }
 
+
+    @ApiOperation("根据Id获取测验信息")
+    @GetMapping("/examsbyid")
+    public ResponseEntity getExamByid(@RequestParam(name = "ids",required = true) List<Integer> ids){
+        return new ResponseEntity(examService.getExamById(ids),HttpStatus.OK);
+    }
 }
